@@ -1,0 +1,109 @@
+To create a database and table, and insert values into it using SQLite3 from the command line, follow these steps:
+
+Step 1: Open Command Line
+Open your command prompt (Windows)
+
+Step 2: Start SQLite3
+Start the SQLite3 command line interface by typing:
+create table student_details(id integer,name varchar(100),age integer,address varchar(100));
+
+Step 3: create a database file called student:
+Command:create table student_details(id integer,name varchar(100),age integer,address varchar(100));
+
+Step 4: Insert Values:
+Command:
+insert into student_details(id,name,age,address)values(101,'vidhya',21,'trichy');
+insert into student_details(id,name,age,address)values(102,'lia',20,'karur');
+insert into student_details(id,name,age,address)values(103,'rami',23,'madurai');
+insert into student_details(id,name,age,address)values(104,'canny',25,'salem');
+insert into student_details(id,name,age,address)values(105,'ruka',22,'salem');
+insert into student_details(id,name,age,address)values(106,'canny',22,'ooty');
+insert into student_details(id,name,age,address)values(107,'rose',24,'chennai');
+
+Step 5: Verify Data:
+To verify that the data was inserted correctly, you can use the SELECT statement:
+SELECT * FROM student_details;
+
+
+Output:
+
+101|vidhya|21|trichy
+102|lia|20|karur
+103|rami|23|madurai
+104|canny|25|salem
+105|ruka|22|salem
+106|canny|22|ooty
+107|rose|24|chennai
+
+
+Another table creation:
+
+
+Open existing database called student:
+
+Step 1: create a table called student_marks:
+Command:
+ create table student_marks(id integer primary key,ht integer,ft integer,status varchar(10),foreign key(id) references student_details(id));
+
+Step 2: Insert Values:Command:
+insert into student_marks(id,ht,ft,status)values(101,70,80,'p');
+insert into student_marks(id,ht,ft,status)values(102,30,20,'f');
+insert into student_marks(id,ht,ft,status)values(103,80,70,'p');
+insert into student_marks(id,ht,ft,status)values(104,60,70,'p');
+insert into student_marks(id,ht,ft,status)values(105,20,40,'f');
+insert into student_marks(id,ht,ft,status)values(106,90,80,'p');
+
+Output:
+
+101|70|80|p
+102|30|20|f
+103|80|70|p
+104|60|70|p
+105|20|40|f
+106|90|80|p
+
+*Join student_details with student_marks:
+To get a combined view of student details and their marks:
+
+SELECT student_details.name,student_details.address,student_marks.status
+FROM student_details 
+JOIN student_marks  ON student_details .id =student_marks .id;
+
+Output:
+vidhya|trichy|p
+lia|karur|f
+rami|madurai|p
+canny|salem|p
+ruka|salem|f
+canny|ooty|p
+
+*Updating Data:
+To update existing records, use the UPDATE statement. For example, to update the address of a student:
+
+UPDATE student_details
+SET address = ' kk.nagar'
+WHERE id = 101;
+
+Output:
+
+101|vidhya|21| kk.nagar
+102|lia|20|karur
+103|rami|23|madurai
+104|canny|25|salem
+105|ruka|22|salem
+106|canny|22|ooty
+107|rose|24|chennai
+
+Deleting Data:
+To delete records, use the DELETE statement. For example, to delete a specific student:
+
+DELETE FROM student_details
+WHERE id = 102;
+
+Output:
+101|vidhya|21| kk.nagar
+103|rami|23|madurai
+104|canny|25|salem
+105|ruka|22|salem
+106|canny|22|ooty
+107|rose|24|chennai

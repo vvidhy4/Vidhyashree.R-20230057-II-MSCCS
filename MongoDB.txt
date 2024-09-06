@@ -1,0 +1,225 @@
+MongoDB:
+
+Step 1: Open Command Line
+Open your command prompt in mongo shell.
+
+Step 2: Start Mongosh.
+
+Step 3:create a database called student1.
+
+Step 4:create table called msc and insert values:
+Insert one:
+db.msc.insertOne({id:101,name:'vidhya',age:21,address:'trichy'})
+Insert many:
+db.msc.insertMany([{id:102,name:'lia',age:20,address:'karur'},{id:103,name:'rami',age:23,address:'madurai'},{id:104,name:'canny',age:24,address:'salem'},{id:105, name:'ruka',age:22,address:'salem'},{id:106,name:'canny',age:22,address:'ooty'},{id:107,name:'rose',age:24,address:'chennai' }]);
+
+db.msc.find()
+
+Output:
+
+{ "_id" : ObjectId("66da8244e61941966979bf27"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da8244e61941966979bf28"), "id" : 102, "name" : "lia", "age" : 20, "address" : "karur" }
+{ "_id" : ObjectId("66da8244e61941966979bf29"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da8244e61941966979bf2a"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da8244e61941966979bf2b"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "salem" }
+{ "_id" : ObjectId("66da8244e61941966979bf2c"), "id" : 106, "name" : "canny", "age" : 22, "address" : "ooty" }
+{ "_id" : ObjectId("66da8244e61941966979bf2d"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Step 5:Update: 
+update one:
+
+Update the address of the document where id is 102:
+db.msc.updateOne(
+    { id: 102 }, 
+    { $set: { address: 'sydney' } } 
+);
+
+Output:
+{ "_id" : ObjectId("66da83727cb78579e3616d4d"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da83727cb78579e3616d4e"), "id" : 102, "name" : "lia", "age" : 20, "address" : "sydney" }
+{ "_id" : ObjectId("66da83727cb78579e3616d4f"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da83727cb78579e3616d50"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da83727cb78579e3616d51"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "salem" }
+{ "_id" : ObjectId("66da83727cb78579e3616d52"), "id" : 106, "name" : "canny", "age" : 22, "address" : "ooty" }
+{ "_id" : ObjectId("66da83727cb78579e3616d53"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Update many:
+The updateMany method updates all documents that match the specified filter.
+
+Update the address of all documents where age is 22 to 'updated_address':
+
+
+db.msc.updateMany(
+    { age: 22 }, 
+    { $set: { address: 'kk nagar' } } 
+);
+
+Output:
+{ "_id" : ObjectId("66da83c306082aa4f9a7126a"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da83c306082aa4f9a7126b"), "id" : 102, "name" : "lia", "age" : 20, "address" : "sydney" }
+{ "_id" : ObjectId("66da83c306082aa4f9a7126c"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da83c306082aa4f9a7126d"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da83c306082aa4f9a7126e"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da83c306082aa4f9a7126f"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da83c306082aa4f9a71270"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Delete:
+
+Delete one:
+
+Delete a document where id is 102:
+db.msc.deleteOne({ id: 102 });
+
+Output:
+{ "_id" : ObjectId("66da83f9020ae95dd492230b"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da83f9020ae95dd492230d"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da83f9020ae95dd492230e"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da83f9020ae95dd492230f"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da83f9020ae95dd4922310"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da83f9020ae95dd4922311"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Delete many:
+
+Delete all documents where age is 22:
+db.msc.deleteMany({ age: 22 });
+
+Output:
+{ "_id" : ObjectId("66da859a58a95dee9672ed2f"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da859a58a95dee9672ed31"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da859a58a95dee9672ed32"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da859a58a95dee9672ed35"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Find method:
+
+Find:
+To find all documents where age is 24:
+db.msc.find({ age: 24 })
+Output:
+{ "_id" : ObjectId("66da86543aa8c629b8a6605b"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da86543aa8c629b8a6605e"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+findOne:
+
+To find documents where age is 24 which comes first
+db.msc.find(
+    { age: 2 }
+)
+
+Skip method:
+
+Skip the first 10 documents and return the rest:
+db.msc.find().skip(2)
+Output:
+{ "_id" : ObjectId("66da88a454a6b85faf89a8b4"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da88a454a6b85faf89a8b5"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da88a454a6b85faf89a8b6"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da88a454a6b85faf89a8b7"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Sort:
+Sort documents by name in ascending order:
+db.msc.find().sort({ name: 1 })
+Output:
+
+{ "_id" : ObjectId("66da88cdc0b83d636cb8a1a6"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da88cdc0b83d636cb8a1a8"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da88cdc0b83d636cb8a1a5"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da88cdc0b83d636cb8a1a9"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+{ "_id" : ObjectId("66da88cdc0b83d636cb8a1a7"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da88cdc0b83d636cb8a1a3"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+
+Sort documents by name in descending order:
+db.msc.find().sort({ name: -1 })
+
+Output:
+
+{ "_id" : ObjectId("66da89bbbb0763e904abb150"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da89bbbb0763e904abb154"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da89bbbb0763e904abb156"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+{ "_id" : ObjectId("66da89bbbb0763e904abb152"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da89bbbb0763e904abb153"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da89bbbb0763e904abb155"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+
+Limit method:
+Limit the results to the first 5 documents:
+db.msc.find().limit(5)
+Output:
+{ "_id" : ObjectId("66da89f21f778a2f9834748d"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da89f21f778a2f9834748f"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da89f21f778a2f98347490"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da89f21f778a2f98347491"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da89f21f778a2f98347492"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+
+Greater than and Less than:
+
+Find documents where age is greater than 22:
+
+db.msc.find({ age: { $gt: 22 } })
+Output:
+{ "_id" : ObjectId("66da8a8acc5947d82c094ddd"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da8a8acc5947d82c094dde"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da8a8acc5947d82c094de1"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Find documents where age is less than 25:
+
+db.msc.find({ age: { $lt: 25 } })
+Output:
+{ "_id" : ObjectId("66da8ac79ea9a6763bd46250"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da8ac79ea9a6763bd46252"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da8ac79ea9a6763bd46253"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da8ac79ea9a6763bd46254"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da8ac79ea9a6763bd46255"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da8ac79ea9a6763bd46256"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Find documents where age is greater than or equal to 22:
+
+db.msc.find({ age: { $gte: 22 } })
+output:
+{ "_id" : ObjectId("66da8af32945a462e04b3ee7"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+{ "_id" : ObjectId("66da8af32945a462e04b3ee3"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da8af32945a462e04b3ee4"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da8af32945a462e04b3ee5"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da8af32945a462e04b3ee6"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da8af32945a462e04b3ee7"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Find documents where age is less than or equal to 24:
+
+db.msc.find({ age: { $lte: 24 } })
+Output:
+{ "_id" : ObjectId("66da8b383a1e7b96f80c91b2"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da8b383a1e7b96f80c91b4"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da8b383a1e7b96f80c91b5"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da8b383a1e7b96f80c91b6"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da8b383a1e7b96f80c91b7"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da8b383a1e7b96f80c91b8"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+
+Find documents where age is greater than 20 and age is less than 30:
+
+And operator:
+db.msc.find({
+    $and: [
+        { age: { $gt: 20 } },
+        { age: { $lt: 30 } }
+    ]
+})
+Output:
+{ "_id" : ObjectId("66da8b6a1489d93b2a7dd358"), "id" : 101, "name" : "vidhya", "age" : 21, "address" : "trichy" }
+{ "_id" : ObjectId("66da8b6a1489d93b2a7dd35a"), "id" : 103, "name" : "rami", "age" : 23, "address" : "madurai" }
+{ "_id" : ObjectId("66da8b6a1489d93b2a7dd35b"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da8b6a1489d93b2a7dd35c"), "id" : 105, "name" : "ruka", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da8b6a1489d93b2a7dd35d"), "id" : 106, "name" : "canny", "age" : 22, "address" : "kk nagar" }
+{ "_id" : ObjectId("66da8b6a1489d93b2a7dd35e"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
+
+Or operator:
+
+Find documents where age is greater than 23 or age is less than 20:
+
+db.msc.find({
+    $or: [
+        { age: { $gt: 23 } },
+        { age: { $lt: 20 } }
+    ]
+})
+Output:
+{ "_id" : ObjectId("66da8bdd15f07ee2527e6775"), "id" : 104, "name" : "canny", "age" : 24, "address" : "salem" }
+{ "_id" : ObjectId("66da8bdd15f07ee2527e6778"), "id" : 107, "name" : "rose", "age" : 24, "address" : "chennai" }
