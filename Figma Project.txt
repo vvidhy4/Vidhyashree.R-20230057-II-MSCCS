@@ -1,7 +1,10 @@
 Figma project:
 
-Title:Purplle website
+Title:Purplle e-commerce website homepage
 
-About:Purplle ecommerce website home page
+About:For the Purplle e-commerce homepage redesign project, I aimed to create a visually stunning and user-centric interface that enhances the online shopping experience. 
+The design features a modern color palette with prominent purples to align with the brand’s identity, streamlined navigation for easier browsing, and interactive elements like dynamic banners and product sliders to engage users. 
+By focusing on a responsive design, the project ensures a seamless experience across all devices. 
+The result is a polished, intuitive homepage that balances aesthetic appeal with functional design, aimed at boosting user engagement and conversions.
 
 https://www.figma.com/design/uh833T8HVEjqhVWQCGzfBT/Untitled?node-id=0-1&t=WbLGLShGHD5Yy4hh-1
